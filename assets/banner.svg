@@ -1,46 +1,51 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300" role="img" aria-label="cbauschek: I build MCP servers, knowledge graphs, and AI tools that ship">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#070b1a"/>
-      <stop offset="0.55" stop-color="#110c2e"/>
-      <stop offset="1" stop-color="#1b0b33"/>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#000000"/>
+      <stop offset="1" stop-color="#01121a"/>
     </linearGradient>
-    <linearGradient id="title" gradientUnits="userSpaceOnUse" x1="300" y1="0" x2="900" y2="0" spreadMethod="repeat">
-      <stop offset="0" stop-color="#22d3ee"/>
-      <stop offset="0.33" stop-color="#a78bfa"/>
-      <stop offset="0.66" stop-color="#f472b6"/>
-      <stop offset="1" stop-color="#22d3ee"/>
-      <animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="600 0" dur="6s" repeatCount="indefinite"/>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#000" stop-opacity="1"/>
+      <stop offset="0.5" stop-color="#000" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
     </linearGradient>
-    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="50"/>
+    <radialGradient id="haze" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#18c8ee" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#18c8ee" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-20%" y="-80%" width="140%" height="260%">
+      <feGaussianBlur stdDeviation="5" result="b1"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="b2"/>
+      <feMerge><feMergeNode in="b2"/><feMergeNode in="b1"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="6" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    <filter id="trail" x="-10%" y="-400%" width="120%" height="900%" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <clipPath id="frame"><rect width="1200" height="300" rx="18"/></clipPath>
-    <clipPath id="pill"><rect x="330" y="196" width="540" height="52" rx="26"/></clipPath>
+    <clipPath id="frame"><rect width="1200" height="300" rx="10"/></clipPath>
+    <clipPath id="floor"><rect x="0" y="160" width="1200" height="140"/></clipPath>
+    <clipPath id="pill"><rect x="330" y="198" width="540" height="50" rx="4"/></clipPath>
   </defs>
 
   <style>
-    .blob { filter: url(#blur); opacity: .55; }
-    .b1 { animation: drift1 14s ease-in-out infinite alternate; }
-    .b2 { animation: drift2 18s ease-in-out infinite alternate; }
-    .b3 { animation: drift3 16s ease-in-out infinite alternate; }
-    @keyframes drift1 { to { transform: translate(180px, 60px); } }
-    @keyframes drift2 { to { transform: translate(-220px, -50px); } }
-    @keyframes drift3 { to { transform: translate(120px, -80px); } }
+    .grid { stroke: #18c8ee; stroke-width: 1.2; fill: none; }
+    .row { stroke: #18c8ee; stroke-width: 1.4; opacity: 0; animation: floor 4s cubic-bezier(.55, 0, 1, .55) infinite; }
+    .r2 { animation-delay: -.5s; } .r3 { animation-delay: -1s; } .r4 { animation-delay: -1.5s; }
+    .r5 { animation-delay: -2s; } .r6 { animation-delay: -2.5s; } .r7 { animation-delay: -3s; } .r8 { animation-delay: -3.5s; }
+    @keyframes floor {
+      0%   { transform: translateY(0); opacity: 0; }
+      15%  { opacity: .7; }
+      100% { transform: translateY(142px); opacity: .9; }
+    }
 
-    .edge { stroke: #7dd3fc; stroke-opacity: .35; stroke-width: 1.5; stroke-dasharray: 6 10; animation: flow 3s linear infinite; }
-    @keyframes flow { to { stroke-dashoffset: -32; } }
-    .node { fill: #a5f3fc; animation: pulse 3.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-    .n2 { animation-delay: -.8s; fill: #c4b5fd; }
-    .n3 { animation-delay: -1.6s; fill: #f9a8d4; }
-    .n4 { animation-delay: -2.4s; }
-    @keyframes pulse { 0%, 100% { transform: scale(1); opacity: .65; } 50% { transform: scale(1.6); opacity: 1; } }
+    .cycle { fill: none; stroke-width: 3; stroke-linecap: square; stroke-dasharray: 22 100; filter: url(#trail); }
+    .c1 { stroke: #6fe8ff; animation: ride 7s linear infinite; }
+    .c2 { stroke: #ff8a1f; animation: ride 9s linear infinite; animation-delay: -3s; }
+    @keyframes ride { from { stroke-dashoffset: 122; } to { stroke-dashoffset: 0; } }
 
-    .title { font: 800 88px 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: -2px; }
+    .title { font: 600 74px 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: 16px; fill: #e6fcff; filter: url(#glow); animation: power 5s ease-in-out infinite; }
+    @keyframes power { 0%, 100% { opacity: 1; } 47% { opacity: 1; } 50% { opacity: .78; } 53% { opacity: 1; } }
+
     .mono { font: 600 23px Consolas, 'SFMono-Regular', Menlo, 'Courier New', monospace; }
 
     .phrase { opacity: 0; animation: show 12s linear infinite; }
@@ -70,62 +75,59 @@
       26.67% { transform: translateX(252px); animation-timing-function: steps(18, end); }
       31.67%, 100% { transform: translateX(0); }
     }
-    .cursor { fill: #22d3ee; animation: blink .9s steps(2, start) infinite; }
+    .cursor { fill: #6fe8ff; animation: blink .9s steps(2, start) infinite; }
     @keyframes blink { to { visibility: hidden; } }
   </style>
 
   <g clip-path="url(#frame)">
-    <rect width="1200" height="300" fill="url(#bg)"/>
+    <rect width="1200" height="300" fill="url(#sky)"/>
 
-    <!-- soft colour clouds -->
-    <circle class="blob b1" cx="180" cy="70" r="150" fill="#0ea5e9"/>
-    <circle class="blob b2" cx="1050" cy="240" r="170" fill="#7c3aed"/>
-    <circle class="blob b3" cx="620" cy="330" r="130" fill="#db2777"/>
-
-    <!-- knowledge graph, left -->
-    <g fill="none">
-      <path class="edge" d="M60 90 L150 50 L235 120 L140 180 L60 90 M140 180 L70 240 M235 120 L300 215 L140 180 M150 50 L270 30"/>
-      <path class="edge" d="M1140 70 L1050 40 L965 105 L1060 170 L1140 70 M1060 170 L1135 235 M965 105 L905 40 M1060 170 L960 245 M1050 40 L1100 -10"/>
+    <!-- neon grid floor -->
+    <g clip-path="url(#floor)">
+      <path class="grid" opacity=".55" d="M600 160 L600 300 M600 160 L710 300 M600 160 L820 300 M600 160 L930 300 M600 160 L1040 300 M600 160 L1150 300 M600 160 L1260 300 M600 160 L1370 300 M600 160 L1480 300 M600 160 L1590 300 M600 160 L1700 300 M600 160 L1810 300 M600 160 L1920 300 M600 160 L2030 300 M600 160 L2140 300 M600 160 L2360 300 M600 160 L2700 300 M600 160 L490 300 M600 160 L380 300 M600 160 L270 300 M600 160 L160 300 M600 160 L50 300 M600 160 L-60 300 M600 160 L-170 300 M600 160 L-280 300 M600 160 L-390 300 M600 160 L-500 300 M600 160 L-610 300 M600 160 L-720 300 M600 160 L-830 300 M600 160 L-940 300 M600 160 L-1160 300 M600 160 L-1500 300"/>
+      <line class="row"    x1="0" y1="160" x2="1200" y2="160"/>
+      <line class="row r2" x1="0" y1="160" x2="1200" y2="160"/>
+      <line class="row r3" x1="0" y1="160" x2="1200" y2="160"/>
+      <line class="row r4" x1="0" y1="160" x2="1200" y2="160"/>
+      <line class="row r5" x1="0" y1="160" x2="1200" y2="160"/>
+      <line class="row r6" x1="0" y1="160" x2="1200" y2="160"/>
+      <line class="row r7" x1="0" y1="160" x2="1200" y2="160"/>
+      <line class="row r8" x1="0" y1="160" x2="1200" y2="160"/>
+      <rect x="0" y="160" width="1200" height="90" fill="url(#fade)"/>
     </g>
-    <g filter="url(#glow)">
-      <circle class="node"    cx="60"  cy="90"  r="5"/>
-      <circle class="node n2" cx="150" cy="50"  r="6"/>
-      <circle class="node n3" cx="235" cy="120" r="5"/>
-      <circle class="node n4" cx="140" cy="180" r="7"/>
-      <circle class="node n2" cx="70"  cy="240" r="4"/>
-      <circle class="node n3" cx="300" cy="215" r="4"/>
-      <circle class="node"    cx="270" cy="30"  r="4"/>
 
-      <circle class="node n3" cx="1140" cy="70"  r="5"/>
-      <circle class="node"    cx="1050" cy="40"  r="6"/>
-      <circle class="node n2" cx="965"  cy="105" r="5"/>
-      <circle class="node n4" cx="1060" cy="170" r="7"/>
-      <circle class="node"    cx="1135" cy="235" r="4"/>
-      <circle class="node n2" cx="905"  cy="40"  r="4"/>
-      <circle class="node n3" cx="960"  cy="245" r="4"/>
-    </g>
+    <!-- horizon -->
+    <ellipse cx="600" cy="160" rx="520" ry="26" fill="url(#haze)"/>
+    <line x1="0" y1="160" x2="1200" y2="160" stroke="#9af1ff" stroke-width="1.6" filter="url(#trail)"/>
+
+    <!-- light trails -->
+    <path class="cycle c1" pathLength="100" d="M-20 44 H230 V20 H700 V46 H1220"/>
+    <path class="cycle c2" pathLength="100" d="M1220 274 H930 V288 H420 V268 H-20"/>
 
     <!-- handle -->
-    <text class="title" x="600" y="150" text-anchor="middle" fill="url(#title)">cbauschek</text>
+    <text class="title" x="608" y="124" text-anchor="middle">CBAUSCHEK</text>
 
     <!-- terminal line -->
-    <rect x="330" y="196" width="540" height="52" rx="26" fill="#0a0f1f" stroke="#334155" stroke-width="1.5"/>
+    <rect x="330" y="198" width="540" height="50" rx="4" fill="#00070b" stroke="#18c8ee" stroke-width="1.5"/>
+    <path d="M330 210 V202 a4 4 0 0 1 4 -4 H346 M870 236 V244 a4 4 0 0 1 -4 4 H854" fill="none" stroke="#ff8a1f" stroke-width="2.5"/>
     <g clip-path="url(#pill)">
-      <text class="mono" x="358" y="230" fill="#4ade80">$</text>
-      <text class="mono" x="384" y="230" fill="#94a3b8" textLength="98" lengthAdjust="spacingAndGlyphs">I build</text>
+      <text class="mono" x="358" y="231" fill="#ff8a1f">$</text>
+      <text class="mono" x="384" y="231" fill="#5fa8b8" textLength="98" lengthAdjust="spacingAndGlyphs">I build</text>
 
       <g class="phrase p1">
-        <text class="mono" x="496" y="230" fill="#e2e8f0" textLength="154" lengthAdjust="spacingAndGlyphs">MCP servers</text>
-        <g class="cover"><rect x="496" y="200" width="380" height="44" fill="#0a0f1f"/><rect class="cursor" x="499" y="209" width="3" height="27"/></g>
+        <text class="mono" x="496" y="231" fill="#e6fcff" textLength="154" lengthAdjust="spacingAndGlyphs">MCP servers</text>
+        <g class="cover"><rect x="496" y="201" width="380" height="44" fill="#00070b"/><rect class="cursor" x="499" y="210" width="3" height="27"/></g>
       </g>
       <g class="phrase p2">
-        <text class="mono" x="496" y="230" fill="#e2e8f0" textLength="224" lengthAdjust="spacingAndGlyphs">knowledge graphs</text>
-        <g class="cover"><rect x="496" y="200" width="380" height="44" fill="#0a0f1f"/><rect class="cursor" x="499" y="209" width="3" height="27"/></g>
+        <text class="mono" x="496" y="231" fill="#e6fcff" textLength="224" lengthAdjust="spacingAndGlyphs">knowledge graphs</text>
+        <g class="cover"><rect x="496" y="201" width="380" height="44" fill="#00070b"/><rect class="cursor" x="499" y="210" width="3" height="27"/></g>
       </g>
       <g class="phrase p3">
-        <text class="mono" x="496" y="230" fill="#e2e8f0" textLength="252" lengthAdjust="spacingAndGlyphs">AI tools that ship</text>
-        <g class="cover"><rect x="496" y="200" width="380" height="44" fill="#0a0f1f"/><rect class="cursor" x="499" y="209" width="3" height="27"/></g>
+        <text class="mono" x="496" y="231" fill="#e6fcff" textLength="252" lengthAdjust="spacingAndGlyphs">AI tools that ship</text>
+        <g class="cover"><rect x="496" y="201" width="380" height="44" fill="#00070b"/><rect class="cursor" x="499" y="210" width="3" height="27"/></g>
       </g>
     </g>
+
+    <rect x="1" y="1" width="1198" height="298" rx="10" fill="none" stroke="#18c8ee" stroke-opacity=".6" stroke-width="1.5"/>
   </g>
 </svg>
