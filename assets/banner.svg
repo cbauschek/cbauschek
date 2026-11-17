@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300" role="img" aria-label="cbauschek: I build MCP servers, knowledge graphs, and AI tools that ship">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#070b1a"/>
+      <stop offset="0.55" stop-color="#110c2e"/>
+      <stop offset="1" stop-color="#1b0b33"/>
+    </linearGradient>
+    <linearGradient id="title" gradientUnits="userSpaceOnUse" x1="300" y1="0" x2="900" y2="0" spreadMethod="repeat">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="0.33" stop-color="#a78bfa"/>
+      <stop offset="0.66" stop-color="#f472b6"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+      <animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="600 0" dur="6s" repeatCount="indefinite"/>
+    </linearGradient>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="50"/>
+    </filter>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="frame"><rect width="1200" height="300" rx="18"/></clipPath>
+    <clipPath id="pill"><rect x="330" y="196" width="540" height="52" rx="26"/></clipPath>
+  </defs>
+
+  <style>
+    .blob { filter: url(#blur); opacity: .55; }
+    .b1 { animation: drift1 14s ease-in-out infinite alternate; }
+    .b2 { animation: drift2 18s ease-in-out infinite alternate; }
+    .b3 { animation: drift3 16s ease-in-out infinite alternate; }
+    @keyframes drift1 { to { transform: translate(180px, 60px); } }
+    @keyframes drift2 { to { transform: translate(-220px, -50px); } }
+    @keyframes drift3 { to { transform: translate(120px, -80px); } }
+
+    .edge { stroke: #7dd3fc; stroke-opacity: .35; stroke-width: 1.5; stroke-dasharray: 6 10; animation: flow 3s linear infinite; }
+    @keyframes flow { to { stroke-dashoffset: -32; } }
+    .node { fill: #a5f3fc; animation: pulse 3.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    .n2 { animation-delay: -.8s; fill: #c4b5fd; }
+    .n3 { animation-delay: -1.6s; fill: #f9a8d4; }
+    .n4 { animation-delay: -2.4s; }
+    @keyframes pulse { 0%, 100% { transform: scale(1); opacity: .65; } 50% { transform: scale(1.6); opacity: 1; } }
+
+    .title { font: 800 88px 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif; letter-spacing: -2px; }
+    .mono { font: 600 23px Consolas, 'SFMono-Regular', Menlo, 'Courier New', monospace; }
+
+    .phrase { opacity: 0; animation: show 12s linear infinite; }
+    .p2 { animation-delay: 4s; }
+    .p3 { animation-delay: 8s; }
+    @keyframes show { 0%, 33.32% { opacity: 1; } 33.33%, 100% { opacity: 0; } }
+
+    .cover { animation: 12s linear infinite; }
+    .p1 .cover { animation-name: type1; }
+    .p2 .cover { animation-name: type2; animation-delay: 4s; }
+    .p3 .cover { animation-name: type3; animation-delay: 8s; }
+    @keyframes type1 {
+      0%     { transform: translateX(0);     animation-timing-function: steps(11, end); }
+      10%    { transform: translateX(154px); }
+      26.67% { transform: translateX(154px); animation-timing-function: steps(11, end); }
+      31.67%, 100% { transform: translateX(0); }
+    }
+    @keyframes type2 {
+      0%     { transform: translateX(0);     animation-timing-function: steps(16, end); }
+      10%    { transform: translateX(224px); }
+      26.67% { transform: translateX(224px); animation-timing-function: steps(16, end); }
+      31.67%, 100% { transform: translateX(0); }
+    }
+    @keyframes type3 {
+      0%     { transform: translateX(0);     animation-timing-function: steps(18, end); }
+      10%    { transform: translateX(252px); }
+      26.67% { transform: translateX(252px); animation-timing-function: steps(18, end); }
+      31.67%, 100% { transform: translateX(0); }
+    }
+    .cursor { fill: #22d3ee; animation: blink .9s steps(2, start) infinite; }
+    @keyframes blink { to { visibility: hidden; } }
+  </style>
+
+  <g clip-path="url(#frame)">
+    <rect width="1200" height="300" fill="url(#bg)"/>
+
+    <!-- soft colour clouds -->
+    <circle class="blob b1" cx="180" cy="70" r="150" fill="#0ea5e9"/>
+    <circle class="blob b2" cx="1050" cy="240" r="170" fill="#7c3aed"/>
+    <circle class="blob b3" cx="620" cy="330" r="130" fill="#db2777"/>
+
+    <!-- knowledge graph, left -->
+    <g fill="none">
+      <path class="edge" d="M60 90 L150 50 L235 120 L140 180 L60 90 M140 180 L70 240 M235 120 L300 215 L140 180 M150 50 L270 30"/>
+      <path class="edge" d="M1140 70 L1050 40 L965 105 L1060 170 L1140 70 M1060 170 L1135 235 M965 105 L905 40 M1060 170 L960 245 M1050 40 L1100 -10"/>
+    </g>
+    <g filter="url(#glow)">
+      <circle class="node"    cx="60"  cy="90"  r="5"/>
+      <circle class="node n2" cx="150" cy="50"  r="6"/>
+      <circle class="node n3" cx="235" cy="120" r="5"/>
+      <circle class="node n4" cx="140" cy="180" r="7"/>
+      <circle class="node n2" cx="70"  cy="240" r="4"/>
+      <circle class="node n3" cx="300" cy="215" r="4"/>
+      <circle class="node"    cx="270" cy="30"  r="4"/>
+
+      <circle class="node n3" cx="1140" cy="70"  r="5"/>
+      <circle class="node"    cx="1050" cy="40"  r="6"/>
+      <circle class="node n2" cx="965"  cy="105" r="5"/>
+      <circle class="node n4" cx="1060" cy="170" r="7"/>
+      <circle class="node"    cx="1135" cy="235" r="4"/>
+      <circle class="node n2" cx="905"  cy="40"  r="4"/>
+      <circle class="node n3" cx="960"  cy="245" r="4"/>
+    </g>
+
+    <!-- handle -->
+    <text class="title" x="600" y="150" text-anchor="middle" fill="url(#title)">cbauschek</text>
+
+    <!-- terminal line -->
+    <rect x="330" y="196" width="540" height="52" rx="26" fill="#0a0f1f" stroke="#334155" stroke-width="1.5"/>
+    <g clip-path="url(#pill)">
+      <text class="mono" x="358" y="230" fill="#4ade80">$</text>
+      <text class="mono" x="384" y="230" fill="#94a3b8" textLength="98" lengthAdjust="spacingAndGlyphs">I build</text>
+
+      <g class="phrase p1">
+        <text class="mono" x="496" y="230" fill="#e2e8f0" textLength="154" lengthAdjust="spacingAndGlyphs">MCP servers</text>
+        <g class="cover"><rect x="496" y="200" width="380" height="44" fill="#0a0f1f"/><rect class="cursor" x="499" y="209" width="3" height="27"/></g>
+      </g>
+      <g class="phrase p2">
+        <text class="mono" x="496" y="230" fill="#e2e8f0" textLength="224" lengthAdjust="spacingAndGlyphs">knowledge graphs</text>
+        <g class="cover"><rect x="496" y="200" width="380" height="44" fill="#0a0f1f"/><rect class="cursor" x="499" y="209" width="3" height="27"/></g>
+      </g>
+      <g class="phrase p3">
+        <text class="mono" x="496" y="230" fill="#e2e8f0" textLength="252" lengthAdjust="spacingAndGlyphs">AI tools that ship</text>
+        <g class="cover"><rect x="496" y="200" width="380" height="44" fill="#0a0f1f"/><rect class="cursor" x="499" y="209" width="3" height="27"/></g>
+      </g>
+    </g>
+  </g>
+</svg>
